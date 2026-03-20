@@ -30,11 +30,37 @@ unblock（做不动怎么办）
 deconstruct（随时拆概念）
 ```
 
+## 安装
+
+一键安装到 Claude Code skills 目录：
+
+```bash
+git clone https://github.com/dontbesilent2025/dbskill.git /tmp/dbskill && \
+for d in /tmp/dbskill/dbs*/; do
+  name=$(basename "$d")
+  mkdir -p ~/.claude/skills/"$name"
+  cp "$d"SKILL.md ~/.claude/skills/"$name"/SKILL.md
+done && \
+rm -rf /tmp/dbskill && \
+echo "✅ dbskill 已安装，重启 Claude Code 后用 /dbs 启动"
+```
+
+一键更新：
+
+```bash
+git clone https://github.com/dontbesilent2025/dbskill.git /tmp/dbskill && \
+for d in /tmp/dbskill/dbs*/; do
+  name=$(basename "$d")
+  cp "$d"SKILL.md ~/.claude/skills/"$name"/SKILL.md
+done && \
+rm -rf /tmp/dbskill && \
+echo "✅ dbskill 已更新"
+```
+
 ## 使用方式
 
-1. 把 `dbskill/` 目录放到你的项目中
-2. 每个子目录的 `SKILL.md` 是完整的 skill 定义
-3. 在 Claude Code 中用 `/dbs` 启动，或直接调用具体 skill
+1. 在 Claude Code 中用 `/dbs` 启动，或直接调用具体 skill
+2. 首次使用会自动路由到最合适的诊断工具
 
 ## 知识库
 
